@@ -1,35 +1,23 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '@auth0/auth0-angular';
+import { CreateComponent } from '../create/create.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, MatButtonModule],
+  imports: [CommonModule, MatButtonModule, CreateComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
-  private readonly http = inject(HttpClient);
-  private readonly document = inject(DOCUMENT);
   private readonly auth = inject(AuthService);
+  private readonly document = inject(DOCUMENT);
   readonly isAuthenticated$ = this.auth.isAuthenticated$;
 
-  login() {
-    this.auth.loginWithRedirect();
-  }
-
   logout() {
-    this.auth.logout();
-  }
-
-  ping() {
-    this.http.get('http://localhost:5145/api/Item').subscribe(
-      (data) => console.log(data),
-      (err) => console.log(err)
-    );
+    this.auth.logout({ logoutParams: { returnTo: this.document.location.origin } });
   }
 }

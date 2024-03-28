@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup" (ngSubmit)="save()">
+  <div class="flex justify-center w-full">
+    <mat-form-field class="w-2/5">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Write title of blogpost" formControlName="title" />
+    </mat-form-field>
+  </div>
+
+  <editor
+    apiKey="kzh4n6zm5jf98f55uqbudkqrm0gtjh3eg0nuuraq2g1u7el9"
+    [init]="{ plugins: 'lists link image table code help wordcount' }"
+    formControlName="content" />
+
+  <div class="flex justify-center items-center m-4">
+    <button type="button" (click)="save()" mat-raised-button>Save</button>
+  </div>
+</form>
