@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { Post, PostService } from '../api';
 
 @Component({
   selector: 'app-create',
@@ -14,12 +15,18 @@ import { EditorModule } from '@tinymce/tinymce-angular';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateComponent {
+  private readonly postService = inject(PostService);
+
   readonly formGroup = new FormGroup({
-    title: new FormControl('', [Validators.required]),
-    content: new FormControl('', [Validators.required]),
+    title: new FormControl<Post['title']>('', [Validators.required]),
+    content: new FormControl<Post['content']>('', [Validators.required]),
   });
 
   save() {
-    console.log(this.formGroup.getRawValue());
+    this.postService
+      .apiPostPost({
+        ...this.formGroup.getRawValue(),
+      })
+      .subscribe();
   }
 }
