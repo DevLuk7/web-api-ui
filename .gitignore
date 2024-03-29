@@ -40,6 +40,3 @@ Thumbs.db
 
 .nx/cache
 .angular
-
-# Generated api files
-src/app/api
