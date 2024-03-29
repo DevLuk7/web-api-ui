@@ -1,7 +1,16 @@
 <p>
   <mat-toolbar>
-    <button mat-button [routerLink]="['list']">List</button>
-    <button mat-button [routerLink]="['create']">Create</button>
+    <div class="flex flex-row justify-between w-full">
+      <div>
+        <a mat-button [routerLink]="['list']">List</a>
+        <a mat-button [routerLink]="['create']">Create</a>
+      </div>
+
+      <div>
+        <span *ngIf="user$ | async as user" class="text-sm"> Loged as {{ user.email }} </span>
+        <button type="button" (click)="logout()" mat-button>Log out</button>
+      </div>
+    </div>
   </mat-toolbar>
 </p>
 
