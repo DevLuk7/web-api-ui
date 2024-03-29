@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { config } from './app.config';
 
 @Component({
   standalone: true,
@@ -17,6 +18,6 @@ export class AppComponent {
   readonly user$ = this.authService.user$;
 
   logout() {
-    this.authService.logout();
+    this.authService.logout({ logoutParams: { returnTo: config().redirect_uri } });
   }
 }

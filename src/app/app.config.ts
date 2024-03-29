@@ -6,7 +6,7 @@ import { authHttpInterceptorFn, provideAuth0 } from '@auth0/auth0-angular';
 import { ApiModule, Configuration, ConfigurationParameters } from './api';
 import { appRoutes } from './app.routes';
 
-const config = () => {
+export const config = () => {
   if (isDevMode()) {
     return {
       redirect_uri: location.origin,
