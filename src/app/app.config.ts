@@ -1,10 +1,13 @@
+import { DOCUMENT } from '@angular/common';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, inject } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { authHttpInterceptorFn, provideAuth0 } from '@auth0/auth0-angular';
 import { ApiModule, Configuration, ConfigurationParameters } from './api';
 import { appRoutes } from './app.routes';
+
+const document = inject(DOCUMENT);
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +19,7 @@ export const appConfig: ApplicationConfig = {
       domain: 'dev-q70qohzvtsuc0rmo.us.auth0.com',
       clientId: 'K3NxUUmC9ddETdtCXgcwmf30KffvBC1d',
       authorizationParams: {
-        redirect_uri: 'http://localhost:4200',
+        redirect_uri: document.location.origin,
         audience: 'http://localhost:5145',
       },
       httpInterceptor: {
