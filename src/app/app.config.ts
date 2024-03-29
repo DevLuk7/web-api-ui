@@ -14,7 +14,7 @@ export const config = () => {
     };
   }
   return {
-    redirect_uri: 'https://black-desert-02f949510.5.azurestaticapps.net',
+    redirect_uri: location.origin,
     apiUrl: 'https://webapi-api.azure-api.net',
   };
 };
