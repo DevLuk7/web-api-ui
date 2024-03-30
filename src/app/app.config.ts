@@ -15,7 +15,7 @@ export const config = () => {
   }
   return {
     redirect_uri: location.origin,
-    apiUrl: 'https://webapi-api.azure-api.net',
+    apiUrl: 'https://webapi-api-app.azurewebsites.net',
   };
 };
 
@@ -30,7 +30,7 @@ export const appConfig: ApplicationConfig = {
       clientId: 'K3NxUUmC9ddETdtCXgcwmf30KffvBC1d',
       authorizationParams: {
         redirect_uri: config().redirect_uri,
-        // audience: config().apiUrl,
+        audience: config().apiUrl,
       },
       httpInterceptor: {
         allowedList: [`${config().apiUrl}/*`],
