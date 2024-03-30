@@ -30,7 +30,7 @@ export const appConfig: ApplicationConfig = {
       clientId: 'K3NxUUmC9ddETdtCXgcwmf30KffvBC1d',
       authorizationParams: {
         redirect_uri: config().redirect_uri,
-        audience: config().apiUrl,
+        // audience: config().apiUrl,
       },
       httpInterceptor: {
         allowedList: [`${config().apiUrl}/*`],
