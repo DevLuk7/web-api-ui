@@ -3,4 +3,5 @@
   [rowData]="posts()"
   [columnDefs]="colDefs"
   [autoSizeStrategy]="autoSizeStrategy"
-  domLayout="autoHeight" />
+  domLayout="autoHeight"
+  (rowClicked)="onRowClicked($event)" />

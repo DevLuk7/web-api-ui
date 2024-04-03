@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { AgGridAngular } from 'ag-grid-angular';
 import {
   ColDef,
+  RowClickedEvent,
   SizeColumnsToContentStrategy,
   SizeColumnsToFitGridStrategy,
   SizeColumnsToFitProvidedWidthStrategy,
@@ -19,6 +21,7 @@ import { PostsStore } from '../data-access/posts.store';
 })
 export class ListComponent {
   readonly posts = inject(PostsStore).posts;
+  private readonly router = inject(Router);
 
   public autoSizeStrategy:
     | SizeColumnsToFitGridStrategy
@@ -35,4 +38,8 @@ export class ListComponent {
   };
 
   readonly colDefs: ColDef[] = [{ field: 'id' }, { field: 'title' }];
+
+  onRowClicked(e: RowClickedEvent) {
+    this.router.navigate(['preview', e.data.id]);
+  }
 }
