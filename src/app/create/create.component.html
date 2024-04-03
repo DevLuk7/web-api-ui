@@ -1,3 +1,18 @@
+<form [formGroup]="generateFormGroup" (ngSubmit)="generate()">
+  <h1 class="text-center">Generate blogpost from description</h1>
+
+  <div class="flex justify-center w-full">
+    <mat-form-field class="w-2/5">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="Insert description of blog post" formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="flex justify-center items-center m-4">
+    <button type="submit" mat-raised-button>Generate</button>
+  </div>
+</form>
+
 <form [formGroup]="formGroup" (ngSubmit)="save()">
   <div class="flex justify-center w-full">
     <mat-form-field class="w-2/5">
@@ -12,6 +27,6 @@
     formControlName="content" />
 
   <div class="flex justify-center items-center m-4">
-    <button type="button" (click)="save()" mat-raised-button>Save</button>
+    <button type="submit" mat-raised-button>Save</button>
   </div>
 </form>
