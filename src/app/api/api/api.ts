@@ -1,5 +1,5 @@
-export * from './item.service';
-import { ItemService } from './item.service';
+export * from './generate.service';
+import { GenerateService } from './generate.service';
 export * from './post.service';
 import { PostService } from './post.service';
-export const APIS = [ItemService, PostService];
+export const APIS = [GenerateService, PostService];

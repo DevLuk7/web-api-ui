@@ -3,13 +3,14 @@
 README.md
 api.module.ts
 api/api.ts
-api/item.service.ts
+api/generate.service.ts
 api/post.service.ts
 configuration.ts
 encoder.ts
 git_push.sh
 index.ts
-model/item.ts
+model/createPostDto.ts
+model/generatePostDto.ts
 model/models.ts
 model/post.ts
 param.ts

@@ -11,10 +11,8 @@
  */
 
 
-export interface Post { 
-    id?: string;
+export interface GeneratePostDto { 
     title?: string | null;
     content?: string | null;
-    createdBy?: string | null;
 }
 
