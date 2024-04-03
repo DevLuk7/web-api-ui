@@ -14,5 +14,6 @@
 export interface GeneratePostDto { 
     title?: string | null;
     content?: string | null;
+    image?: string | null;
 }
 

@@ -3,6 +3,7 @@
 README.md
 api.module.ts
 api/api.ts
+api/blobStorage.service.ts
 api/generate.service.ts
 api/post.service.ts
 configuration.ts

@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
+import { BlobStorageService } from './api/blobStorage.service';
 import { GenerateService } from './api/generate.service';
 import { PostService } from './api/post.service';
 
