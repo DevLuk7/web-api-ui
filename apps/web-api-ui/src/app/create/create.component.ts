@@ -4,7 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { GeneratePostDto, GenerateService, Post } from '../api';
+import { GeneratePostDto, GenerateService, Post } from '@web-api-ui/web-api';
 import { PostsStore } from '../data-access/posts.store';
 
 @Component({

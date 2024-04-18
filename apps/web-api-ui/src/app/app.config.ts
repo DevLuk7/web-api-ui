@@ -3,7 +3,7 @@ import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { authHttpInterceptorFn, provideAuth0 } from '@auth0/auth0-angular';
-import { ApiModule, Configuration, ConfigurationParameters } from './api';
+import { ApiModule, Configuration, ConfigurationParameters } from '@web-api-ui/web-api';
 import { appRoutes } from './app.routes';
 
 export const config = () => {

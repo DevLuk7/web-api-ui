@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { Post, PostService } from '@web-api-ui/web-api';
 import { EMPTY, Observable } from 'rxjs';
-import { Post, PostService } from '../api';
 import { getRouteParam } from '../utils/route-params';
 
 @Component({

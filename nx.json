@@ -55,6 +55,10 @@
       "standalone": true,
       "changeDetection": "OnPush",
       "nameAndDirectoryFormat": "derived"
+    },
+    "@nx/angular:library": {
+      "linter": "none",
+      "unitTestRunner": "none"
     }
   },
   "defaultProject": "web-api-ui"

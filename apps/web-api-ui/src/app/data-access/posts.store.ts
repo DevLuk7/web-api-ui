@@ -2,8 +2,8 @@ import { inject } from '@angular/core';
 import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withHooks, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
+import { Post, PostService } from '@web-api-ui/web-api';
 import { switchMap } from 'rxjs';
-import { Post, PostService } from '../api';
 
 type PostsState = {
   posts: Post[];
