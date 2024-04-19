@@ -6,8 +6,8 @@
     "start": "nx run-many -t build",
     "start:blog": "nx serve blog",
     "serve:ssr": "node dist/apps/blog/server/server.mjs",
-    "build": "nx run-many -t build --skipNxCache",
-    "build:ssr": "nx build blog --skipNxCache",
+    "build": "nx run-many -t build",
+    "build:ssr": "nx build blog",
     "test": "nx test",
     "openapi:generate": "rm -rf libs/web-api/src/lib/web-api && openapi-generator-cli generate"
   },
