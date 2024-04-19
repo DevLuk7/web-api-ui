@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run-many -t build",
+    "start": "nx run-many -t serve",
     "start:blog": "nx serve blog",
     "serve:ssr": "node dist/apps/blog/server/server.mjs",
-    "build": "nx run-many -t build",
+    "build": "nx run-many -t build --parallel=false",
     "build:ssr": "nx build blog",
     "test": "nx test",
     "openapi:generate": "rm -rf libs/web-api/src/lib/web-api && openapi-generator-cli generate"
