@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nx run-many -t serve",
     "start:blog": "nx serve blog",
+    "start:ssr": "node server/server.mjs",
     "serve:ssr": "node dist/apps/blog/server/server.mjs",
     "build": "nx run-many -t build --parallel=false",
     "build:ssr": "nx build blog",
