@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -25,15 +25,13 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-
+          npm run test --if-present
+      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: release.zip
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,21 +47,19 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: node-app
-
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
-
+      
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8C49A9CCE64D4DD3B00A1686C878DB63 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_280FD89480364F35A2B46D6CFE8D8E74 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F652F4853FBD4FF7B6BAE99D2368ED75 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_275E9F6CDC1E421D90AEAAB16434F38C }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D4CF8B286109487D93609F8CE750E91D }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_4158B2C1BECE4D1FBA1287103C2AD77C }}
 
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
         with:
           app-name: 'DevLukBlog'
           slot-name: 'Production'
-          package: 'dist/apps/blog'
+          package: .
+          
