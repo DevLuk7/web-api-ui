@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { PostService } from '@web-api-ui/web-api';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,4 +12,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {}
+export class HomeComponent {
+  readonly posts$ = inject(PostService)
+    .apiPostGet()
+    .pipe(map((posts) => posts.slice(0, 3)));
+}

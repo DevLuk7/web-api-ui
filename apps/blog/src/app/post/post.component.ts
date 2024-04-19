@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PostService } from '@web-api-ui/web-api';
 
 @Component({
   selector: 'app-post',
@@ -9,4 +11,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './post.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PostComponent {}
+export class PostComponent {
+  readonly paramsId = inject(ActivatedRoute).snapshot.params?.['id'];
+  readonly post$ = inject(PostService).apiPostIdGet(this.paramsId);
+}
