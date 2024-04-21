@@ -47,8 +47,6 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  const port = process.env['PORT'] || 4000;
-
   const server = app();
 
   server.listen(() => {
@@ -56,6 +54,8 @@ function run(): void {
   });
 
   return;
+
+  const port = process.env['PORT'] || 4000;
 
   // Start up the Node server
   server.listen(port, () => {
