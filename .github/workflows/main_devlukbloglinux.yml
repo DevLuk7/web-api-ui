@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'DevLukBlogLinux'
           slot-name: 'Production'
-          package: 'dist/apps/blog'
+          package: .

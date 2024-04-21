@@ -58,6 +58,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'DevLukBlogLinux'
+          app-name: 'DevLukBlog'
           slot-name: 'Production'
           package: 'apps/blog'
