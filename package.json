@@ -47,6 +47,7 @@
     "@angular/cli": "~17.2.0",
     "@angular/compiler-cli": "~17.2.0",
     "@angular/language-service": "~17.2.0",
+    "@netlify/plugin-angular-universal": "^1.0.1",
     "@nx/eslint": "18.1.3",
     "@nx/eslint-plugin": "18.1.3",
     "@nx/jest": "18.1.3",
