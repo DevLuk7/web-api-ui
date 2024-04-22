@@ -49,12 +49,6 @@ export function app(): express.Express {
 function run(): void {
   const server = app();
 
-  server.listen(() => {
-    console.log(`Node Express server listening on production`);
-  });
-
-  return;
-
   const port = process.env['PORT'] || 4000;
 
   // Start up the Node server
