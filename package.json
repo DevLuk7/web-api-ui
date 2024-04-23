@@ -9,6 +9,7 @@
     "serve:ssr": "node dist/apps/blog/server/server.mjs",
     "build": "nx run-many -t build --parallel=false",
     "build:ssr": "nx build blog",
+    "build:webapi": "nx build web-api-ui",
     "test": "nx test",
     "openapi:generate": "rm -rf libs/web-api/src/lib/web-api && openapi-generator-cli generate"
   },
