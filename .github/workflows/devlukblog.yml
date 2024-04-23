@@ -1,6 +1,6 @@
 on: [push]
 
-name: Linux_Container_Node_Workflow
+name: Deploy Docker container to DevLukBlog website
 
 jobs:
   build-and-deploy:
