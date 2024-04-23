@@ -1,3 +1,4 @@
+import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
@@ -29,5 +30,11 @@ export const appConfig: ApplicationConfig = {
         return new Configuration(params);
       })
     ),
+    {
+      provide: DATE_PIPE_DEFAULT_OPTIONS,
+      useValue: {
+        dateFormat: 'dd MMMM YYYY',
+      },
+    },
   ],
 };

@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-screen-lg px-3 py-6" *ngIf="post$ | async as post">
   <h1 class="text-center text-3xl font-bold">{{ post.title }}</h1>
-  <div class="mt-2 text-center text-sm text-gray-400">{{ post.createdBy }}</div>
+  <div class="mt-2 text-center text-sm text-gray-400">{{ post.createdAt | date }}</div>
   <div class="mx-auto mt-5 max-w-prose" [innerHTML]="post.content"></div>
 </div>
