@@ -5,6 +5,7 @@ api.module.ts
 api/api.ts
 api/blobStorage.service.ts
 api/generate.service.ts
+api/newsletter.service.ts
 api/post.service.ts
 configuration.ts
 encoder.ts

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { BlobStorageService } from './api/blobStorage.service';
 import { GenerateService } from './api/generate.service';
+import { NewsletterService } from './api/newsletter.service';
 import { PostService } from './api/post.service';
 
 @NgModule({
