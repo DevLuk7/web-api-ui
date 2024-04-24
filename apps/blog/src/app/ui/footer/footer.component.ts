@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NewsletterService } from '@web-api-ui/web-api';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-footer',
@@ -13,6 +14,8 @@ import { NewsletterService } from '@web-api-ui/web-api';
 })
 export class FooterComponent {
   private readonly newsletterService = inject(NewsletterService);
+  readonly savedInProgress$$ = new BehaviorSubject<boolean>(false);
+  showMessage = false;
 
   readonly emailForm = new FormGroup({
     email: new FormControl('', {
@@ -23,7 +26,12 @@ export class FooterComponent {
 
   onSubmit() {
     if (this.emailForm.valid) {
-      this.newsletterService.apiNewsletterPost(this.emailForm.getRawValue().email).subscribe();
+      this.savedInProgress$$.next(true);
+      this.newsletterService.apiNewsletterPost(this.emailForm.getRawValue().email).subscribe(() => {
+        this.emailForm.reset();
+        this.savedInProgress$$.next(false);
+        this.showMessage = true;
+      });
     }
   }
 }
