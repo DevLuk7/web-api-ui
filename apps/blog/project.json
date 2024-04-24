@@ -20,7 +20,9 @@
         "styles": ["apps/blog/src/styles.scss"],
         "scripts": [],
         "server": "apps/blog/src/main.server.ts",
-        "prerender": true,
+        "prerender": {
+          "routesFile": "apps/blog/routes.txt"
+        },
         "ssr": {
           "entry": "apps/blog/server.ts"
         }

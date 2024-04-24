@@ -61,6 +61,5 @@
       "unitTestRunner": "none"
     }
   },
-  "defaultProject": "web-api-ui",
-  "nxCloudAccessToken": "ODc2Mzk4OTktMGVhOS00Y2UyLWI3YjItZmQ3ZDVjYmRlZjRmfHJlYWQtd3JpdGU="
+  "defaultProject": "web-api-ui"
 }
