@@ -6,4 +6,4 @@ async function createFile() {
   fs.writeFileSync('apps/blog/routes.txt', posts.map((x: any) => `/post/${x.id}`).join('\n'));
 }
 
-createFile();
+// createFile();
