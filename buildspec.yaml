@@ -1,0 +1,16 @@
+version: 0.1
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20.x
+    commands:
+      - echo Installing dependencies...
+      - npm install
+  build:
+    commands:
+      - echo Building the application...
+      - npm run build:ssr
+artifacts:
+  files:
+    - '**/*'
