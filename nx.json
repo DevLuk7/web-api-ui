@@ -61,5 +61,21 @@
       "unitTestRunner": "none"
     }
   },
-  "defaultProject": "web-api-ui"
+  "defaultProject": "web-api-ui",
+  "plugins": [
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview"
+      }
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ]
 }
