@@ -37,9 +37,9 @@ export class ListComponent {
     ],
   };
 
-  readonly colDefs: ColDef[] = [{ field: 'id' }, { field: 'title' }];
+  readonly colDefs: ColDef[] = [{ field: 'id', valueGetter: ({ data }) => data._id }, { field: 'title' }];
 
   onRowClicked(e: RowClickedEvent) {
-    this.router.navigate(['preview', e.data.id]);
+    this.router.navigate(['preview', e.data._id]);
   }
 }

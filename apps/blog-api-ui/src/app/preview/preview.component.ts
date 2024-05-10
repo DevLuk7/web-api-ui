@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
-import { Post, PostService } from '@web-api-ui/web-api';
+import { Post } from '@web-api-ui/web-api';
 import { EMPTY, Observable } from 'rxjs';
+import { PostsService } from '../posts.service';
 import { getRouteParam } from '../utils/route-params';
 
 @Component({
@@ -14,10 +15,10 @@ import { getRouteParam } from '../utils/route-params';
 })
 export class PreviewComponent implements OnInit {
   private readonly id = getRouteParam('id');
-  private readonly postService = inject(PostService);
+  private readonly postService = inject(PostsService);
   post$: Observable<Post> = EMPTY;
 
   ngOnInit(): void {
-    this.post$ = this.postService.apiPostIdGet(this.id);
+    this.post$ = this.postService.getPost(this.id);
   }
 }

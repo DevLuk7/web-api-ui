@@ -6,7 +6,7 @@
     "start": "nx run-many -t serve",
     "start:blog": "nx serve blog",
     "start:blog-api": "nx serve blog-api",
-    "start:webapi": "nx serve web-api-ui",
+    "start:blog-api-ui": "nx serve blog-api-ui",
     "serve:ssr": "node dist/apps/blog/server/server.mjs",
     "build": "nx run-many -t build --parallel=false",
     "build:ssr": "nx build blog",

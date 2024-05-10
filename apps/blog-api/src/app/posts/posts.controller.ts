@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { AuthorizationGuard } from '../authorization.guard';
 import { CreatePostDto } from './post.schema';
 import { PostsService } from './posts.service';
@@ -13,9 +13,7 @@ export class PostsController {
   }
 
   @Get('/post/:id')
-  get(@Query('id') id: string) {
-    console.log(id);
-
+  get(@Param('id') id: string) {
     return this.postsService.findOne(id);
   }
 
