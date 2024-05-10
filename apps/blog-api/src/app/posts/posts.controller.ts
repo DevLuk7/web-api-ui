@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { CreatePostDto } from './post.schema';
 import { PostsService } from './posts.service';
 
 @Controller()
@@ -7,16 +8,18 @@ export class PostsController {
 
   @Get('/posts')
   getAll() {
-    return 'posts';
+    return this.postsService.findAll();
   }
 
   @Get('/post/:id')
-  get(@Query('id') id: number) {
-    return id;
+  get(@Query('id') id: string) {
+    console.log(id);
+
+    return this.postsService.findOne(id);
   }
 
   @Post('/post')
-  add() {
-    return 'add';
+  async add(@Body() createPostDto: CreatePostDto) {
+    return this.postsService.create(createPostDto);
   }
 }
