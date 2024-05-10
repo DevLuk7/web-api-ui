@@ -87,9 +87,9 @@ export class Configuration {
             this.credentials = {};
         }
 
-        // init default Bearer credential
-        if (!this.credentials['Bearer']) {
-            this.credentials['Bearer'] = () => {
+        // init default oauth2 credential
+        if (!this.credentials['oauth2']) {
+            this.credentials['oauth2'] = () => {
                 return typeof this.accessToken === 'function'
                     ? this.accessToken()
                     : this.accessToken;

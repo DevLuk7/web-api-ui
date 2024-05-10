@@ -3,16 +3,12 @@
 README.md
 api.module.ts
 api/api.ts
-api/blobStorage.service.ts
-api/generate.service.ts
-api/newsletter.service.ts
-api/post.service.ts
+api/default.service.ts
 configuration.ts
 encoder.ts
 git_push.sh
 index.ts
 model/createPostDto.ts
-model/generatePostDto.ts
 model/models.ts
 model/post.ts
 param.ts

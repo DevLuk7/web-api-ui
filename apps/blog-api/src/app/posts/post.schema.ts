@@ -4,18 +4,23 @@ import { HydratedDocument } from 'mongoose';
 
 @Schema()
 export class Post {
+  @ApiProperty()
   @Prop()
   id: string;
 
+  @ApiProperty()
   @Prop()
   title: string;
 
+  @ApiProperty()
   @Prop()
   content: string;
 
+  @ApiProperty()
   @Prop()
   createdBy: string;
 
+  @ApiProperty()
   @Prop()
   createdAt: Date;
 }

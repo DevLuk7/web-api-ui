@@ -7,7 +7,7 @@
       "v3.0": {
         "generatorName": "typescript-angular",
         "output": "libs/web-api/src/lib/web-api",
-        "inputSpec": "http://localhost:5145/swagger/v1/swagger.json",
+        "inputSpec": "http://localhost:3333/api-yaml",
         "additionalProperties": {
           "basePath": ""
         }

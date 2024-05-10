@@ -2,9 +2,8 @@ import { inject } from '@angular/core';
 import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withHooks, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { Post } from '@web-api-ui/web-api';
+import { DefaultService, Post } from '@web-api-ui/web-api';
 import { switchMap } from 'rxjs';
-import { PostsService } from '../posts.service';
 
 type PostsState = {
   posts: Post[];
@@ -23,17 +22,17 @@ export const PostsStore = signalStore(
   withState(initialState),
   withHooks({
     onInit(store) {
-      const postService = inject(PostsService);
+      const postService = inject(DefaultService);
 
-      postService.getAllPosts().subscribe((posts) => {
+      postService.postsControllerGetAll().subscribe((posts) => {
         patchState(store, (state) => ({ ...state, posts }));
       });
     },
   }),
-  withMethods((store, postService = inject(PostsService)) => ({
+  withMethods((store, postService = inject(DefaultService)) => ({
     createPost: rxMethod<Post>(
       switchMap((post) =>
-        postService.createPost(post).pipe(
+        postService.postsControllerAdd(post).pipe(
           tapResponse({
             next: (post) => {
               patchState(store, (state) => ({ ...state, posts: [...state.posts, post as Post] }));

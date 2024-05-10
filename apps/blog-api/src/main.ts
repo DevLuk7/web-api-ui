@@ -32,7 +32,7 @@ function setupOpenApi(app: INestApplication) {
     })
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api', app, document, { yamlDocumentUrl: '/api-yaml' });
 }
 
 bootstrap();
