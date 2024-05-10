@@ -61,7 +61,7 @@
       "unitTestRunner": "none"
     }
   },
-  "defaultProject": "web-api-ui",
+  "defaultProject": "blog-api-ui",
   "plugins": [
     {
       "plugin": "@nx/webpack/plugin",
