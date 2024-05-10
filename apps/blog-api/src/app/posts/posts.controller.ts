@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { AuthorizationGuard } from '../authorization.guard';
 import { CreatePostDto } from './post.schema';
 import { PostsService } from './posts.service';
 
@@ -18,6 +19,7 @@ export class PostsController {
     return this.postsService.findOne(id);
   }
 
+  @UseGuards(AuthorizationGuard)
   @Post('/post')
   async add(@Body() createPostDto: CreatePostDto) {
     return this.postsService.create(createPostDto);

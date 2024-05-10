@@ -5,7 +5,7 @@ import { PostsModule } from './posts/posts.module';
 @Module({
   imports: [
     PostsModule,
-    MongooseModule.forRoot('mongodb+srv://lukass100:71HZuHvgIV8utvKF@blog.cbhdfxx.mongodb.net/', {
+    MongooseModule.forRoot(process.env.MONGODB_URI, {
       appName: 'Blog',
     }),
   ],
