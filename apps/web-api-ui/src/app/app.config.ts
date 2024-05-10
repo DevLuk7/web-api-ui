@@ -10,7 +10,7 @@ export const config = () => {
   if (isDevMode()) {
     return {
       redirect_uri: location.origin,
-      apiUrl: 'http://localhost:5145',
+      apiUrl: 'http://localhost:3333',
     };
   }
   return {
