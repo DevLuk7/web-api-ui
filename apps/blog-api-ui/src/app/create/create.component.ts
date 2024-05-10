@@ -4,7 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { GeneratePostDto, GenerateService, Post } from '@web-api-ui/web-api';
+import { Post } from '@web-api-ui/web-api';
 import { PostsStore } from '../data-access/posts.store';
 
 @Component({
@@ -17,27 +17,27 @@ import { PostsStore } from '../data-access/posts.store';
 })
 export class CreateComponent {
   readonly postsStore = inject(PostsStore);
-  readonly generateService = inject(GenerateService);
+  // readonly generateService = inject(GenerateService);
 
   readonly generateFormGroup = new FormGroup({
     description: new FormControl<string>('', Validators.required),
   });
 
   generate() {
-    this.generateService
-      .apiGeneratePostPost(this.generateFormGroup.getRawValue().description || '')
-      .subscribe((res) => {
-        this.formGroup.patchValue(res);
-      });
+    // this.generateService
+    //   .apiGeneratePostPost(this.generateFormGroup.getRawValue().description || '')
+    //   .subscribe((res) => {
+    //     this.formGroup.patchValue(res);
+    //   });
   }
 
   readonly formGroup = new FormGroup({
     title: new FormControl<Post['title']>('', [Validators.required]),
     content: new FormControl<Post['content']>('', [Validators.required]),
-    image: new FormControl<GeneratePostDto['image']>('', [Validators.required]),
+    image: new FormControl<string>('', [Validators.required]), // GeneratePostDto['image']
   });
 
   save() {
-    this.postsStore.createPost(this.formGroup.getRawValue());
+    this.postsStore.createPost(this.formGroup.getRawValue() as unknown as Post);
   }
 }
