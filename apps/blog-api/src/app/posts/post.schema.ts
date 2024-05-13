@@ -38,3 +38,19 @@ export class CreatePostDto implements CreatePost {
   @ApiProperty()
   content: string;
 }
+
+export class GeneratePostDto {
+  @ApiProperty()
+  description: string;
+}
+
+export class GeneratedPostDto implements CreatePost {
+  @ApiProperty()
+  title: string;
+
+  @ApiProperty()
+  content: string;
+
+  @ApiProperty()
+  image: string;
+}

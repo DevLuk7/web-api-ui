@@ -4,7 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { Post } from '@web-api-ui/web-api';
+import { Post, PostsService } from '@web-api-ui/web-api';
 import { PostsStore } from '../data-access/posts.store';
 
 @Component({
@@ -17,18 +17,18 @@ import { PostsStore } from '../data-access/posts.store';
 })
 export class CreateComponent {
   readonly postsStore = inject(PostsStore);
-  // readonly generateService = inject(GenerateService);
+  readonly postsService = inject(PostsService);
 
   readonly generateFormGroup = new FormGroup({
     description: new FormControl<string>('', Validators.required),
   });
 
   generate() {
-    // this.generateService
-    //   .apiGeneratePostPost(this.generateFormGroup.getRawValue().description || '')
-    //   .subscribe((res) => {
-    //     this.formGroup.patchValue(res);
-    //   });
+    this.postsService
+      .postsControllerGenerate({ description: this.generateFormGroup.getRawValue().description || '' })
+      .subscribe((res) => {
+        this.formGroup.patchValue(res);
+      });
   }
 
   readonly formGroup = new FormGroup({

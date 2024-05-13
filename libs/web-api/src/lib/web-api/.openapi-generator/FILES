@@ -9,6 +9,8 @@ encoder.ts
 git_push.sh
 index.ts
 model/createPostDto.ts
+model/generatePostDto.ts
+model/generatedPostDto.ts
 model/models.ts
 model/post.ts
 param.ts

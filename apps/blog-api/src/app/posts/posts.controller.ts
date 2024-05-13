@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthorizationGuard } from '../authorization.guard';
-import { Post as BlogPost, CreatePostDto } from './post.schema';
+import { Post as BlogPost, CreatePostDto, GeneratePostDto, GeneratedPostDto } from './post.schema';
 import { PostsService } from './posts.service';
 
 @ApiTags('Posts')
@@ -33,5 +33,14 @@ export class PostsController {
   @Post()
   async add(@Body() createPostDto: CreatePostDto) {
     return this.postsService.create(createPostDto);
+  }
+
+  @UseGuards(AuthorizationGuard)
+  @ApiResponse({
+    type: GeneratedPostDto,
+  })
+  @Post('generate')
+  async generate(@Body() generatePostDto: GeneratePostDto) {
+    return this.postsService.genearte(generatePostDto.description);
   }
 }
