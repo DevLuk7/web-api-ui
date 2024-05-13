@@ -1,14 +1,15 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthorizationGuard } from '../authorization.guard';
 import { Post as BlogPost, CreatePostDto } from './post.schema';
 import { PostsService } from './posts.service';
 
-@Controller()
+@ApiTags('Posts')
+@Controller('posts')
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
-  @Get('/posts')
+  @Get()
   @ApiResponse({
     type: BlogPost,
     isArray: true,
@@ -17,7 +18,7 @@ export class PostsController {
     return this.postsService.findAll();
   }
 
-  @Get('/post/:id')
+  @Get('/:id')
   @ApiResponse({
     type: BlogPost,
   })
@@ -29,7 +30,7 @@ export class PostsController {
   @ApiResponse({
     type: BlogPost,
   })
-  @Post('/post')
+  @Post()
   async add(@Body() createPostDto: CreatePostDto) {
     return this.postsService.create(createPostDto);
   }

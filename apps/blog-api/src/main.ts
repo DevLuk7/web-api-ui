@@ -22,7 +22,6 @@ function setupOpenApi(app: INestApplication) {
   const config = new DocumentBuilder()
     .setTitle('API Documentation')
     .setVersion('1.0')
-    .addTag('api')
     .addOAuth2({
       bearerFormat: 'JWT',
       type: 'http',
@@ -30,9 +29,11 @@ function setupOpenApi(app: INestApplication) {
       name: 'JWT',
       in: 'header',
     })
+    .addTag('Posts', 'Manage blog post')
     .build();
+
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document, { yamlDocumentUrl: '/api-yaml' });
+  SwaggerModule.setup('swagger', app, document, { yamlDocumentUrl: 'api-yaml' });
 }
 
 bootstrap();

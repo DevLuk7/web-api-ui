@@ -1,3 +1,3 @@
-export * from './default.service';
-import { DefaultService } from './default.service';
-export const APIS = [DefaultService];
+export * from './posts.service';
+import { PostsService } from './posts.service';
+export const APIS = [PostsService];

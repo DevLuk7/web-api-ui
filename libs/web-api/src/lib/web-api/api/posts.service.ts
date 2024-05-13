@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 @Injectable({
   providedIn: 'root'
 })
-export class DefaultService {
+export class PostsService {
 
     protected basePath = '';
     public defaultHeaders = new HttpHeaders();
@@ -146,7 +146,7 @@ export class DefaultService {
             }
         }
 
-        let localVarPath = `/api/post`;
+        let localVarPath = `/api/posts`;
         return this.httpClient.request<Post>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -204,7 +204,7 @@ export class DefaultService {
             }
         }
 
-        let localVarPath = `/api/post/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        let localVarPath = `/api/posts/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         return this.httpClient.request<Post>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
