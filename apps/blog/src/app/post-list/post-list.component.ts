@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { PostService } from '@web-api-ui/web-api';
+import { PostsService } from '@web-api-ui/web-api';
 
 @Component({
   selector: 'app-post-list',
@@ -12,5 +12,5 @@ import { PostService } from '@web-api-ui/web-api';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostListComponent {
-  readonly posts$ = inject(PostService).apiPostGet();
+  readonly posts$ = inject(PostsService).postsControllerGetAll();
 }

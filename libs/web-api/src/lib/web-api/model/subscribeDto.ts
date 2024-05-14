@@ -11,11 +11,7 @@
  */
 
 
-export interface Post { 
-    _id: string;
-    title: string;
-    content: string;
-    createdBy: string;
-    createdAt: string;
+export interface SubscribeDto { 
+    email: string;
 }
 

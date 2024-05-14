@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import * as crypto from 'crypto';
 import { Model } from 'mongoose';
 import { OpenAIService } from '../open-ai.service';
 import { CreatePostDto, GeneratedPostDto, Post } from './post.schema';
@@ -10,7 +9,7 @@ export class PostsService {
   constructor(@InjectModel(Post.name) private postModel: Model<Post>, private openAIService: OpenAIService) {}
 
   async create(createPostDto: CreatePostDto): Promise<Post> {
-    const createdPost = new this.postModel({ id: crypto.randomUUID(), ...createPostDto });
+    const createdPost = new this.postModel(createPostDto);
     return createdPost.save();
   }
 

@@ -5,8 +5,7 @@ import { HydratedDocument } from 'mongoose';
 @Schema()
 export class Post {
   @ApiProperty()
-  @Prop()
-  id: string;
+  _id: string;
 
   @ApiProperty()
   @Prop()

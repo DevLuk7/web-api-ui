@@ -3,6 +3,7 @@
 README.md
 api.module.ts
 api/api.ts
+api/newsletter.service.ts
 api/posts.service.ts
 configuration.ts
 encoder.ts
@@ -13,5 +14,6 @@ model/generatePostDto.ts
 model/generatedPostDto.ts
 model/models.ts
 model/post.ts
+model/subscribeDto.ts
 param.ts
 variables.ts

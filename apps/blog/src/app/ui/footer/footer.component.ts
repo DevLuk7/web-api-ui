@@ -27,7 +27,7 @@ export class FooterComponent {
   onSubmit() {
     if (this.emailForm.valid) {
       this.savedInProgress$$.next(true);
-      this.newsletterService.apiNewsletterPost(this.emailForm.getRawValue().email).subscribe(() => {
+      this.newsletterService.newsletterControllerAdd({ email: this.emailForm.getRawValue().email }).subscribe(() => {
         this.emailForm.reset();
         this.savedInProgress$$.next(false);
         this.showMessage = true;

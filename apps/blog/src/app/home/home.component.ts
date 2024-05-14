@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { PostService } from '@web-api-ui/web-api';
+import { PostsService } from '@web-api-ui/web-api';
 import { map } from 'rxjs';
 
 @Component({
@@ -13,7 +13,7 @@ import { map } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  readonly posts$ = inject(PostService)
-    .apiPostGet()
+  readonly posts$ = inject(PostsService)
+    .postsControllerGetAll()
     .pipe(map((posts) => posts.slice(0, 3)));
 }

@@ -9,7 +9,7 @@ import { appRoutes } from './app.routes';
 export const config = () => {
   if (isDevMode()) {
     return {
-      apiUrl: 'http://localhost:5145',
+      apiUrl: 'http://localhost:3333',
     };
   }
   return {
