@@ -1,11 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import OpenAI from 'openai';
 
 @Injectable()
 export class OpenAIService {
-  readonly openai = new OpenAI({
-    apiKey: process.env.OPEN_AI_SECRET_KEY,
-  });
+  readonly openai: OpenAI;
+
+  constructor(private readonly configService: ConfigService) {
+    this.openai = new OpenAI({
+      apiKey: this.configService.get('OPEN_AI_SECRET_KEY'),
+    });
+  }
 
   async generatePost(description: string) {
     const chatCompletionsOptions = this.openai.chat.completions.create({
