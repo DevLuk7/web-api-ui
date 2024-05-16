@@ -1,1 +1,1 @@
-web: node dist/apps/blog-api/main.js
+web: npm install && npm run build:blog-api && node dist/apps/blog-api/main.js
