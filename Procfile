@@ -1,0 +1,1 @@
+web: node dist/apps/blog-api/main.js

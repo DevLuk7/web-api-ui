@@ -46,3 +46,7 @@ Thumbs.db
 
 # SSR files
 apps/blog/routes.txt
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
