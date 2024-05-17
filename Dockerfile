@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+ENV PORT=8080
+
 RUN npm run build:blog-api
 
 EXPOSE 8080

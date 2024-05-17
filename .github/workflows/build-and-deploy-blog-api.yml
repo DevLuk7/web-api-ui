@@ -37,8 +37,41 @@ jobs:
           pip install --upgrade pip
           pip install awsebcli
 
-      - name: Initialize EB CLI
-        run: eb init -p node.js '${{ secrets.APPLICATION_BLOG_API_NAME }}' --region ${{ secrets.AWS_REGION }}
+      - name: Build, tag, and push Docker image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+          ECR_REPOSITORY: blog-ecr
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Deploy to Elastic Beanstalk
-        run: eb deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          EB_ENV_NAME: ${{ secrets.APPLICATION_BLOG_API_ENVIRONMENT_NAME }}
+          ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+          ECR_REPOSITORY: blog-ecr
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          # Create Dockerrun.aws.json file
+          echo '{
+            "AWSEBDockerrunVersion": "1",
+            "Image": {
+              "Name": "'$ECR_REGISTRY'/'$ECR_REPOSITORY':'$IMAGE_TAG'",
+              "Update": "true"
+            },
+            "Ports": [
+              {
+                "ContainerPort": "8080"
+              }
+            ]
+          }' > Dockerrun.aws.json
+
+          # Initialize EB CLI and deploy
+          pip install awsebcli
+          eb init -p docker $EB_ENV_NAME --region $AWS_REGION
+          eb use $EB_ENV_NAME
+          eb deploy

@@ -3,4 +3,7 @@ npm-debug.log
 Dockerfile
 .dockerignore
 .git
+.gitignore# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
 .gitignore
