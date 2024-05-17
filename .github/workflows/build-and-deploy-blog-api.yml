@@ -38,7 +38,7 @@ jobs:
           pip install awsebcli
 
       - name: Copy Dockerfile to root
-        run: cp apps/blog/Dockerfile .
+        run: cp apps/blog-api/Dockerfile .
 
       - name: Log in to Amazon ECR
         run: |
