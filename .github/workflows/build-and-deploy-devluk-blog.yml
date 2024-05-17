@@ -30,7 +30,7 @@ jobs:
         run: npm install
 
       - name: Build the application
-        run: npm run build:blog-api
+        run: npm run build:ssr
 
       - name: Install EB CLI
         run: |
@@ -38,7 +38,7 @@ jobs:
           pip install awsebcli
 
       - name: Copy Dockerfile to root
-        run: cp apps/blog-api/Dockerfile .
+        run: cp apps/blog/Dockerfile .
 
       - name: Log in to Amazon ECR
         run: |
