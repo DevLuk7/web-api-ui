@@ -57,14 +57,20 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           echo '{
-            "AWSEBDockerrunVersion": "1",
-            "Image": {
-              "Name": "'$ECR_REGISTRY'/'$ECR_REPOSITORY':'$IMAGE_TAG'",
-              "Update": "true"
-            },
-            "Ports": [
+            "AWSEBDockerrunVersion": "3",
+            "containerDefinitions": [
               {
-                "ContainerPort": "8080"
+                "image": "'$ECR_REGISTRY'/'$ECR_REPOSITORY':'$IMAGE_TAG'",
+                "portMappings": [
+                  {
+                    "containerPort": 8080,
+                    "hostPort": 80
+                  },
+                  {
+                    "containerPort": 8080,
+                    "hostPort": 8080
+                  }
+                ]
               }
             ]
           }' > Dockerrun.aws.json
