@@ -13,7 +13,7 @@ export const config = () => {
     };
   }
   return {
-    apiUrl: 'https://webapi-api-app.azurewebsites.net',
+    apiUrl: 'http://blog-api-env.eba-uvbms822.eu-north-1.elasticbeanstalk.com',
   };
 };
 
