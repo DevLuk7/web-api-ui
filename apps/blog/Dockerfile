@@ -14,4 +14,4 @@ RUN npm run build:ssr
 
 EXPOSE 8080
 
-CMD ["node", "dist/apps/blog-api/main.js"]
+CMD ["node", "dist/apps/blog/server/server.mjs"]
