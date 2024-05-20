@@ -14,6 +14,14 @@ export function app(): express.Express {
 
   const commonEngine = new CommonEngine();
 
+  // Redirect HTTP to HTTPS
+  server.use((req, res, next) => {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+      return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    }
+    next();
+  });
+
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
