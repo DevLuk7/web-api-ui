@@ -37,7 +37,7 @@ function setupOpenApi(app: INestApplication) {
 }
 
 const setupCors = (app: INestApplication) => {
-  const allowedOrigins = ['http://localhost:3333', 'https://blog-api-env.eba-uvbms822.eu-north-1.elasticbeanstalk.com'];
+  const allowedOrigins = ['http://localhost:3333', 'https://devluk.io'];
 
   app.enableCors({
     origin: (origin, callback) => {
