@@ -11,7 +11,7 @@ async function bootstrap() {
 
   setupOpenApi(app);
 
-  app.enableCors();
+  setupCors(app);
 
   const port = process.env.PORT || 3333;
   await app.listen(port);
@@ -35,5 +35,22 @@ function setupOpenApi(app: INestApplication) {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document, { yamlDocumentUrl: 'api-yaml' });
 }
+
+const setupCors = (app: INestApplication) => {
+  const allowedOrigins = ['http://localhost:3333', 'https://blog-api-env.eba-uvbms822.eu-north-1.elasticbeanstalk.com'];
+
+  app.enableCors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+    allowedHeaders: 'Content-Type, Accept',
+  });
+};
 
 bootstrap();
