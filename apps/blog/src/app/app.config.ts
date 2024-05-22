@@ -13,7 +13,7 @@ export const config = () => {
     };
   }
   return {
-    apiUrl: 'https://api.devluk.io/',
+    apiUrl: 'https://api.devluk.io',
   };
 };
 
