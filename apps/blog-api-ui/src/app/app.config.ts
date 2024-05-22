@@ -15,7 +15,7 @@ export const config = () => {
   }
   return {
     redirect_uri: location.origin,
-    apiUrl: 'https://webapi-api-app.azurewebsites.net',
+    apiUrl: 'https://api.devluk.io',
   };
 };
 
