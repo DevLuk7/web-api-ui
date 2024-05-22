@@ -13,7 +13,7 @@ export const config = () => {
     };
   }
   return {
-    apiUrl: 'https://blog-api-env.eba-uvbms822.eu-north-1.elasticbeanstalk.com',
+    apiUrl: 'https://api.devluk.io/',
   };
 };
 

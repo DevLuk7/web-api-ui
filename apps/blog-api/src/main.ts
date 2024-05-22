@@ -37,7 +37,7 @@ function setupOpenApi(app: INestApplication) {
 }
 
 const setupCors = (app: INestApplication) => {
-  const allowedOrigins = ['http://localhost:4200', 'https://devluk.io'];
+  const allowedOrigins = ['http://localhost:4200', 'http://localhost:4000', 'https://devluk.io'];
 
   app.enableCors({
     origin: (origin, callback) => {
