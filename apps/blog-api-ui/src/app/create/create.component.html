@@ -13,15 +13,8 @@
   </div>
 </form>
 
-<form [formGroup]="formGroup" (ngSubmit)="save()">
-  <div class="flex justify-center w-full">
-    <mat-form-field class="w-2/5">
-      <mat-label>Title</mat-label>
-      <input matInput placeholder="Write title of blogpost" formControlName="title" />
-    </mat-form-field>
-  </div>
-
-  <div class="flex justify-center m-4 object-cover h-80">
+<form [formGroup]="formGroup" (ngSubmit)="save()" class="form-blogpost">
+  <!-- <div class="flex justify-center m-4 object-cover h-80">
     <img *ngIf="formGroup.value.image as image; else noImageTpl" [src]="formGroup.value.image" alt="" />
     <ng-template #noImageTpl>
       <svg
@@ -34,11 +27,21 @@
           d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
       </svg>
     </ng-template>
-  </div>
+  </div> -->
+
+  <h1>
+    <editor
+      apiKey="kzh4n6zm5jf98f55uqbudkqrm0gtjh3eg0nuuraq2g1u7el9"
+      [init]="{ menubar: false, toolbar: false, placeholder: 'Add title...' }"
+      [inline]="true"
+      formControlName="title" />
+  </h1>
 
   <editor
     apiKey="kzh4n6zm5jf98f55uqbudkqrm0gtjh3eg0nuuraq2g1u7el9"
-    [init]="{ plugins: 'lists link image table code help wordcount' }"
+    [init]="{ menubar: false, placeholder: 'Write content...' }"
+    [inline]="true"
+    placeholder="Insert content of blog post"
     formControlName="content" />
 
   <div class="flex justify-center items-center m-4">

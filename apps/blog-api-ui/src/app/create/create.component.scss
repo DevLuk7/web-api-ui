@@ -1,0 +1,8 @@
+.form-blogpost {
+    margin: auto;
+    width: 750px;
+}
+
+::ng-deep editor * {
+    outline: none;
+}

@@ -1,17 +1,21 @@
-<p>
-  <mat-toolbar>
-    <div class="flex flex-row justify-between w-full">
-      <div>
-        <a mat-button [routerLink]="['list']">List</a>
-        <a mat-button [routerLink]="['create']">Create</a>
-      </div>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['list']">List</a>
+      <a mat-list-item [routerLink]="['create']">Create</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <div class="flex flex-row justify-between w-full">
+        <div></div>
 
-      <div>
-        <span *ngIf="user$ | async as user" class="text-sm"> Loged as {{ user.email }} </span>
-        <button type="button" (click)="logout()" mat-button>Log out</button>
+        <div>
+          <span *ngIf="user$ | async as user" class="text-sm"> Loged as {{ user.email }} </span>
+          <button type="button" (click)="logout()" mat-button>Log out</button>
+        </div>
       </div>
-    </div>
-  </mat-toolbar>
-</p>
-
-<router-outlet></router-outlet>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

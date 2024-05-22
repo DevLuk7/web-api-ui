@@ -34,7 +34,6 @@ export class CreateComponent {
   readonly formGroup = new FormGroup({
     title: new FormControl<Post['title']>('', [Validators.required]),
     content: new FormControl<Post['content']>('', [Validators.required]),
-    image: new FormControl<string>('', [Validators.required]), // GeneratePostDto['image']
   });
 
   save() {
