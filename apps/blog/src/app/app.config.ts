@@ -15,7 +15,7 @@ export const config = () => {
   }
   return {
     apiUrl: 'https://api.devluk.io',
-    cmsUrl: 'http://devluk-cms-env.eba-kyq3tkft.eu-north-1.elasticbeanstalk.com',
+    cmsUrl: 'https://cms.devluk.io',
   };
 };
 
