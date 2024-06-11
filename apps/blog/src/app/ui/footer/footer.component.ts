@@ -27,7 +27,7 @@ export class FooterComponent {
   onSubmit() {
     if (this.emailForm.valid) {
       this.savedInProgress$$.next(true);
-      this.http.post('https://sqs0df5qej.execute-api.eu-north-1.amazonaws.com/default/newsletter', { email: this.emailForm.getRawValue().email }).subscribe(() => {
+      this.http.post('https://aysi8ffk7c.execute-api.eu-north-1.amazonaws.com/default/newsletter', { email: this.emailForm.getRawValue().email }).subscribe(() => {
         this.emailForm.reset();
         this.savedInProgress$$.next(false);
         this.showMessage = true;
