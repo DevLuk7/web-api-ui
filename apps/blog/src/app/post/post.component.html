@@ -1,5 +1,5 @@
-<div class="mx-auto px-3 py-6" *ngIf="post$ | async as post" style="max-width: 850px">
-  <h1 class="text-center text-6xl font-bold">{{ post.attributes.title }}</h1>
-  <div class="mt-2 text-center text-sm text-gray-400">{{ post.attributes.createdAt | date }}</div>
-  <div class="mt-5 mx-auto prose prose-invert max-w-none" [innerHTML]="post.attributes.content | markdown"></div>
+<div class="mx-auto px-3 py-6 prose prose-invert max-w-none" *ngIf="post$ | async as post" style="max-width: 850px">
+  <h1 class="text-center">{{ post.attributes.title }}</h1>
+  <div class="text-center text-sm text-gray-400">{{ post.attributes.createdAt | date }}</div>
+  <div class="mt-5 mx-auto " [innerHTML]="post.attributes.content | markdown"></div>
 </div>
