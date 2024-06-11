@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NewsletterService } from '@web-api-ui/web-api';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -13,7 +13,7 @@ import { BehaviorSubject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
-  private readonly newsletterService = inject(NewsletterService);
+  private readonly http = inject(HttpClient);
   readonly savedInProgress$$ = new BehaviorSubject<boolean>(false);
   showMessage = false;
 
@@ -27,7 +27,7 @@ export class FooterComponent {
   onSubmit() {
     if (this.emailForm.valid) {
       this.savedInProgress$$.next(true);
-      this.newsletterService.newsletterControllerAdd({ email: this.emailForm.getRawValue().email }).subscribe(() => {
+      this.http.post('https://sqs0df5qej.execute-api.eu-north-1.amazonaws.com/default/newsletter', { email: this.emailForm.getRawValue().email }).subscribe(() => {
         this.emailForm.reset();
         this.savedInProgress$$.next(false);
         this.showMessage = true;

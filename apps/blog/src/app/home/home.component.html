@@ -19,56 +19,55 @@
         loading="lazy" />
     </div>
   </div>
-  <!-- <div class="felx justify-between">
-    <div>
-      <div>Years of experience</div>
-      <div>+8</div>
-    </div>
-  </div> -->
 </div>
 <div class="mx-auto max-w-screen-lg px-3 py-6">
   <div class="mb-6 text-2xl font-bold">
     Recent <span class="bg-gradient-to-br from-purple-500 to-red-400 bg-clip-text text-transparent">Projects</span>
   </div>
   <div class="flex flex-col gap-6">
-    <div class="flex flex-col items-center gap-x-8 rounded-md bg-slate-800 md:flex-row">
+    <app-block>
       <a class="hover:text-red-400 cursor-pointer w-full p-3" href="https://uxuiai.web.app/" target="_blank">
         <div class="flex flex-col items-center gap-y-2 md:flex-row">
-          <div class="text-xl font-semibold">TailwindCSS AI Generator: Pages and Components</div>
+          <div class="text-xl font-semibold">AI Generator for TailwindCSS</div>
         </div>
         <div class="my-3 flex gap-2">
-          <div class="rounded-md px-2 py-1 text-xs font-semibold bg-purple-400 text-purple-900">Gemini</div>
-          <div class="rounded-md px-2 py-1 text-xs font-semibold bg-red-400 text-red-900">OpenAI</div>
-          <div class="rounded-md px-2 py-1 text-xs font-semibold bg-purple-400 text-purple-900">Angular</div>
-          <div class="rounded-md px-2 py-1 text-xs font-semibold bg-red-400 text-red-900">TypeScript</div>
-          <div class="rounded-md px-2 py-1 text-xs font-semibold bg-purple-400 text-purple-900">Node.js</div>
-          <div class="rounded-md px-2 py-1 text-xs font-semibold bg-red-400 text-red-900">Firebase</div>
-          <div class="rounded-md px-2 py-1 text-xs font-semibold bg-purple-400 text-purple-900">Tailwind.css</div>
+          @for (item of ['Gemini', 'Angular', 'TypeScript', 'Node.js', 'Firebase', 'TailwindCSS']; track $index; let e =
+          $even) {
+          <div
+            class="rounded-md px-2 py-1 text-xs font-semibold"
+            [ngClass]="{
+              'bg-purple-400 text-purple-900': e,
+              'bg-red-400 text-red-900': !e
+            }">
+            {{ item }}
+          </div>
+          }
         </div>
         <p class="mt-3 text-gray-400">Project focused on generating TailwindCSS components and pages using AI.</p>
       </a>
-    </div>
+    </app-block>
   </div>
 </div>
-<!-- <div class="mx-auto max-w-screen-lg px-3 py-6">
+
+<div class="mx-auto max-w-screen-lg px-3 py-6">
   <div class="mb-6 text-2xl font-bold">
     <div class="flex items-baseline justify-between">
       <div>
         Recent <span class="bg-gradient-to-br from-purple-500 to-red-400 bg-clip-text text-transparent">Posts</span>
       </div>
-      <div class="text-sm"><a routerLink="/post-list">View all Posts →</a></div>
+      <!-- <div class="text-sm"><a routerLink="/post-list">View all Posts →</a></div> -->
     </div>
   </div>
-  <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-    <ng-container *ngFor="let post of posts$ | async">
-      <a class="hover:translate-y-1" [routerLink]="['/post', post._id]">
+  <div class="flex flex-col gap-6">
+    <app-block *ngFor="let post of posts()">
+      <a class="hover:text-red-400 w-full" [routerLink]="['posts', post.attributes.slug]">
         <div class="overflow-hidden rounded-md bg-slate-800">
-          <div class="px-3 pt-4 pb-6 text-center">
-            <h2 class="text-xl font-semibold">{{ post.title }}</h2>
-            <div class="mt-1 text-xs text-gray-400">{{ post.createdAt | date }}</div>
+          <div class="px-3 pt-4 pb-6">
+            <h2 class="text-xl font-semibold">{{ post.attributes.title }}</h2>
+            <div class="mt-1 text-xs text-gray-400">{{ post.attributes.publishedAt | date }}</div>
           </div>
         </div>
       </a>
-    </ng-container>
+    </app-block>
   </div>
-</div> -->
+</div>

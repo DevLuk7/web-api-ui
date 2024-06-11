@@ -5,19 +5,19 @@ import { PostComponent } from './post/post.component';
 
 export const appRoutes: Route[] = [
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
   },
   {
-    path: 'post/:id',
+    path: 'posts/:slug',
     component: PostComponent,
   },
   {
-    path: 'post-list',
+    path: 'posts',
     component: PostListComponent,
   },
   {
     path: '**',
-    redirectTo: 'home',
+    redirectTo: '',
   },
 ];

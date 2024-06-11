@@ -23,7 +23,8 @@
         "prerender": false,
         "ssr": {
           "entry": "apps/blog/server.ts"
-        }
+        },
+        "allowedCommonJsDependencies": ["prismjs"]
       },
       "configurations": {
         "production": {

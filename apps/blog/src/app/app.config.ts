@@ -10,10 +10,12 @@ export const config = () => {
   if (isDevMode()) {
     return {
       apiUrl: 'http://localhost:3333',
+      cmsUrl: 'http://localhost:1337',
     };
   }
   return {
     apiUrl: 'https://api.devluk.io',
+    cmsUrl: 'http://devluk-cms-env.eba-kyq3tkft.eu-north-1.elasticbeanstalk.com',
   };
 };
 
