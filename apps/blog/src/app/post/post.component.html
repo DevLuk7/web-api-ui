@@ -1,5 +1,6 @@
 <div class="mx-auto px-3 py-6 prose prose-invert max-w-none" *ngIf="post$ | async as post" style="max-width: 850px">
   <h1 class="text-center">{{ post.attributes.title }}</h1>
   <div class="text-center text-sm text-gray-400">{{ post.attributes.createdAt | date }}</div>
+  <img [src]="post.attributes.image.data.attributes.url | cmsUrl" alt="">
   <div class="mt-5 mx-auto " [innerHTML]="post.attributes.content | markdown"></div>
 </div>

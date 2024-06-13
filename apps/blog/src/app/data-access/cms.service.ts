@@ -18,7 +18,7 @@ export class CMSService {
 
   getPost(slug: string): Observable<Post> {
     return this.http
-      .get(`${this.cmsUrl}/api/posts?filters[slug][$eq]=${slug}`)
+      .get(`${this.cmsUrl}/api/posts?filters[slug][$eq]=${slug}&populate=*`)
       .pipe(map((res: any) => res.data[0]));
   }
 }

@@ -1,5 +1,4 @@
 export interface Post {
-  title: string;
   attributes: {
     slug: string;
     title: string;
@@ -7,5 +6,6 @@ export interface Post {
     createdAt: string;
     updatedAt: string;
     content: string;
+    image: any;
   };
 }
