@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, isDevMode } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { GoogleAnalyticsService } from './data-access/google-analytics.service';
 import { FooterComponent } from './ui/footer/footer.component';
 import { NavigationComponent } from './ui/navigation/navigation.component';
 
@@ -10,4 +11,12 @@ import { NavigationComponent } from './ui/navigation/navigation.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  private readonly googleAnalyticsService = inject(GoogleAnalyticsService);
+
+  constructor() {
+    if (!isDevMode()) {
+      this.googleAnalyticsService.loadGoogleAnalytics();
+    }
+  }
+}
